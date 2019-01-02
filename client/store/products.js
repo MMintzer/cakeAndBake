@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
   let newState = {...state}
   switch (action.type) {
     case SET_PRODUCTS:
-      newState.products = action.productsList
+      newState.productsList = action.productsList
       return newState
     case SET_SELECTED_PRODUCT:
       newState.selectedProduct = action.selectedProduct

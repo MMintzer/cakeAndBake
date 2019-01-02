@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {ProductCard} from './productCard'
+import ProductCard from './productCard'
 import {getProducts} from '../../store/products'
 
 class ProductsList extends Component {
@@ -8,7 +8,7 @@ class ProductsList extends Component {
     try {
       await this.props.getProducts()
     } catch (error) {
-      console.logo(error)
+      console.log(error)
     }
   }
 
@@ -16,7 +16,7 @@ class ProductsList extends Component {
     const {productsList} = this.props
     return (
       <div className="products-list">
-        <h1>THAR BE PRODUCTS HERE!</h1>
+        <h1>THAR BE PRODUCTS HERE! /{productsList.length}</h1>
         {productsList.map(product => (
           <ProductCard product={product} key={product.id} />
         ))}
