@@ -12,15 +12,7 @@ async function seed() {
     User.create({email: 'cody@email.com', password: '123'}),
     User.create({email: 'murphy@email.com', password: '123'})
   ])
-  const products = await Promise.all([
-    Product.create({
-      name: 'Chocolate Cake',
-      description: 'Our signature chocolate cake',
-      image:
-        'https://livforcake.com/wp-content/uploads/2017/07/black-forest-cake-6.jpg',
-      price: 100
-    })
-  ])
+  const products = await Product.bulkCreate(productsArray, {returning: true})
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${products.length} products`)
