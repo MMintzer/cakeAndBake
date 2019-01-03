@@ -26,6 +26,10 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  cakeCoins: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
   }
 })
 
