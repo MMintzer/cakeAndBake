@@ -15,3 +15,18 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/addCoins', async (req, res, next) => {
+  try {
+    console.log(req.session.passport)
+    const user = await User.findById(req.session.passport.user)
+    if (user) {
+      const oldCoins = user.cakeCoins
+      const newCoins = oldCoins + 1000
+      user.update({cakeCoins: newCoins})
+    }
+    res.send(user)
+  } catch (error) {
+    next(error)
+  }
+})
